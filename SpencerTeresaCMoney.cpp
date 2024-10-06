@@ -1,5 +1,13 @@
+// Author: Teresa Spencer
+// Date: October 4th, 2024
+// Description: This is a program to test overloaded operators in the Money class
+// and member function to return a given percent of a Money object
+// It uses separate files for an application, implementation, and interface
+
 #include "SpencerTeresaCMoney.h"
 
+
+// Overloaded arithmetic and comparison operators
 Money operator +(const Money& amount1, const Money& amount2) {
     Money temp;
     temp.allCents = amount1.allCents + amount2.allCents;
@@ -46,6 +54,7 @@ Money::Money(long dollars, int cents) {
     allCents = dollars * 100 + cents;
 }
 
+// Constructors
 Money::Money(long dollars) : allCents(dollars  * 100) {}
 Money::Money() : allCents(0) {}
 
@@ -53,6 +62,7 @@ double Money::getValue() const {
     return (allCents * 0.01);
 }
 
+// Getters
 Money Money::percent(int percentFigure) const {
     Money temp;
     temp.allCents = allCents * (percentFigure / 100.0);
@@ -63,6 +73,7 @@ int digitToInt(char c) {
     return static_cast<int>(c) - static_cast<int>('0');
 }
 
+// Overloaded insertion and extraction operators
 istream& operator >>(istream& ins, Money& amount) {
     char oneChar, decimalPoint, digit1, digit2;
     long dollars;
